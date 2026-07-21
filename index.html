@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aurelia Studio | Login</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <main class="auth-layout" id="authLayout">
+        <section class="brand-panel" aria-label="Studio intro">
+          <div class="brand-copy">
+            <p class="eyebrow">Aurelia Studio • Private Access</p>
+            <h1>Quiet luxury, framed in light.</h1>
+            <p>
+              Enter a refined world of cinematic portraiture, editorial storytelling, and elevated creative collaboration.
+            </p>
+          </div>
+        </section>
+
+        <aside class="login-card" aria-label="Sign in">
+          <div class="card-inner">
+            <div id="message" class="message"></div>
+
+            <div id="loginFormView">
+              <h2>Sign in</h2>
+              <p class="card-subtitle">Enter the studio</p>
+              <form id="loginForm">
+                <label for="loginEmail">Email</label>
+                <input id="loginEmail" name="loginEmail" type="email" placeholder="name@example.com" required />
+
+                <label for="loginPassword">Password</label>
+                <input id="loginPassword" name="loginPassword" type="password" placeholder="Enter password" required />
+
+                <button type="submit" class="primary">Sign In</button>
+              </form>
+            </div>
+
+            <div id="signupFormView" class="hidden">
+              <h2>Create account</h2>
+              <p class="card-subtitle">Join the Aurelia Studio network</p>
+
+              <form id="signupForm">
+                <label for="signupName">Full Name</label>
+                <input id="signupName" name="signupName" type="text" placeholder="Alex Morgan" required />
+
+                <label for="signupEmail">Email</label>
+                <input id="signupEmail" name="signupEmail" type="email" placeholder="name@example.com" required />
+
+                <label for="signupPassword">Password</label>
+                <input id="signupPassword" name="signupPassword" type="password" placeholder="Create password" required />
+
+                <button type="submit">Create Account</button>
+              </form>
+            </div>
+
+            <p class="toggle-text">
+              <span id="togglePrompt">Don’t have an account?</span>
+              <a id="toggleAuthLink" class="secondary-link" href="#">Sign up</a>
+            </p>
+            <a class="secondary-link" href="#">Forgot password?</a>
+          </div>
+        </aside>
+      </main>
+
+      <section class="dashboard-page hidden" id="dashboardPage">
+        <header class="dashboard-header">
+          <div>
+            <p class="eyebrow">Aurelia Studio • Curated Gallery</p>
+            <h2 id="dashboardGreeting">Welcome back</h2>
+          </div>
+          <button class="ghost-btn" id="logoutBtn" type="button">Log Out</button>
+        </header>
+
+        <div class="feature-strip" id="featureStrip"></div>
+        <div class="dashboard-grid" id="dashboardGrid"></div>
+      </section>
+    </div>
+
+    <div class="modal-overlay hidden" id="imageModal" aria-hidden="true">
+      <div class="modal-card">
+        <button class="modal-close" id="modalCloseBtn" type="button">✕</button>
+        <img id="modalImage" src="" alt="Full preview" />
+        <div class="modal-caption" id="modalCaption"></div>
+      </div>
+    </div>
+
+    <script>
+      const authLayout = document.getElementById('authLayout');
+      const dashboardPage = document.getElementById('dashboardPage');
+      const dashboardGreeting = document.getElementById('dashboardGreeting');
+      const dashboardGrid = document.getElementById('dashboardGrid');
+      const loginView = document.getElementById('loginFormView');
+      const signupView = document.getElementById('signupFormView');
+      const togglePrompt = document.getElementById('togglePrompt');
+      const toggleAuthLink = document.getElementById('toggleAuthLink');
+      const messageBox = document.getElementById('message');
+      const logoutBtn = document.getElementById('logoutBtn');
+      const featureStrip = document.getElementById('featureStrip');
+
+      const photoGroups = [
+        {
+          name: 'Landscape',
+          items: [
+            { title: 'Midnight Coastline', description: 'Moonlit tides and quiet horizon light.', location: 'Reykjavík, Iceland', date: '12 March 2025', likes: 248, image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Velvet Valley', description: 'Soft alpine glow across a cinematic ridge.', location: 'Swiss Alps', date: '03 February 2025', likes: 201, image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Desert Silence', description: 'Golden currents of wind over sculpted dunes.', location: 'Sahara, Morocco', date: '19 October 2024', likes: 186, image: 'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Frozen Reflection', description: 'Cold air and pale skies around a glacial lake.', location: 'Jotunheimen, Norway', date: '07 January 2025', likes: 174, image: 'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Tropical Drift', description: 'Lush coastlines bathed in soft evening tones.', location: 'Bali, Indonesia', date: '26 April 2024', likes: 164, image: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Aurora Ridge', description: 'A calm mountain horizon under a luminous sky.', location: 'Lofoten, Norway', date: '08 November 2024', likes: 158, image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Misty Canyon', description: 'Quiet stone textures wrapped in fog and shadow.', location: 'Sedona, USA', date: '17 July 2024', likes: 171, image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Golden Meadow', description: 'Fields of warm light stretching into the distance.', location: 'Dolomites, Italy', date: '02 September 2024', likes: 189, image: 'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=900&q=80' }
+          ]
+        },
+        
+        {
+          name: 'Architecture',
+          items: [
+            { title: 'Golden Hour Estate', description: 'An architectural study softened by evening warmth.', location: 'Marrakech, Morocco', date: '21 November 2024', likes: 315, image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Concrete Reverie', description: 'Clean lines and shadow sculpting in modern interiors.', location: 'Copenhagen, Denmark', date: '08 May 2024', likes: 193, image: 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Glass Horizon', description: 'A luminous skyline wrapped in cool twilight tones.', location: 'Dubai, UAE', date: '13 September 2024', likes: 238, image: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Monochrome House', description: 'Quiet luxury expressed through structure and form.', location: 'Austin, USA', date: '02 July 2024', likes: 155, image: 'https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Atrium Light', description: 'A soft glow slicing through sculptural space.', location: 'Singapore', date: '17 March 2024', likes: 182, image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Modernist Atrium', description: 'Precision framing and muted tones in a geometric interior.', location: 'Stockholm, Sweden', date: '11 January 2025', likes: 174, image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Terrace Shadows', description: 'A sculptural terrace designed for calm and contrast.', location: 'Lisbon, Portugal', date: '25 August 2024', likes: 166, image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Courtyard Echo', description: 'Warm stone, open air, and quiet symmetry.', location: 'Kyoto, Japan', date: '04 February 2025', likes: 181, image: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80' }
+          ]
+        },
+        {
+          name: 'Wildlife',
+          items: [
+            { title: 'Forest Watcher', description: 'A rare moment of stillness in the canopy.', location: 'Amazon Rainforest', date: '30 June 2024', likes: 172, image: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Savanna Pulse', description: 'Golden motion beneath an evening sky.', location: 'Kenya', date: '05 August 2024', likes: 198, image: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Ocean Hunter', description: 'A powerful silhouette above the breaking surf.', location: 'Tasmania', date: '16 January 2025', likes: 214, image: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Snow Leopard', description: 'Elegant movement across crystalline terrain.', location: 'Himalayas', date: '28 February 2025', likes: 229, image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Emerald Eye', description: 'A luminous animal portrait in rich natural tones.', location: 'Borneo', date: '10 November 2024', likes: 188, image: 'https://images.unsplash.com/photo-1535941339077-2dd1c7963098?auto=format&fit=crop&w=900&q=80' },
+            { title: 'River Stalker', description: 'An elegant predator moving through reflective waters.', location: 'Okavango Delta', date: '19 May 2024', likes: 176, image: 'https://images.unsplash.com/photo-1474511320723-9a56873867b5?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Reef Whisper', description: 'Quiet life moving beneath a bright coral canopy.', location: 'Great Barrier Reef', date: '22 March 2025', likes: 183, image: 'https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Arctic Wings', description: 'A vivid bird in stark polar air and open light.', location: 'Svalbard', date: '12 February 2025', likes: 169, image: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=900&q=80' }
+          ]
+        },
+        {
+          name: 'Travel',
+          items: [
+            { title: 'City Glow', description: 'Vibrant streets beneath silver-blue dusk.', location: 'Tokyo, Japan', date: '18 May 2024', likes: 205, image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Cove Escape', description: 'A serene coastal path bathed in warm light.', location: 'Santorini, Greece', date: '20 June 2024', likes: 177, image: 'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Desert Path', description: 'A quiet route through ancient earth and sky.', location: 'Wadi Rum, Jordan', date: '03 October 2024', likes: 168, image: 'https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Northern Light', description: 'A luminous crossing of sky and sea.', location: 'Faroe Islands', date: '27 September 2024', likes: 226, image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Golden Market', description: 'Rich textures and color from a local evening market.', location: 'Istanbul, Turkey', date: '14 April 2024', likes: 183, image: 'https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Mountain Village', description: 'A bright village tucked between peaks and pines.', location: 'Swiss Alps', date: '09 July 2024', likes: 172, image: 'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Bazaar Night', description: 'Color-rich streets glowing under lantern light.', location: 'Marrakech, Morocco', date: '24 November 2024', likes: 198, image: 'https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=900&q=80' },
+            { title: 'Temple Steps', description: 'A spiritual journey framed by architecture and sky.', location: 'Kyoto, Japan', date: '15 May 2024', likes: 188, image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=900&q=80' }
+          ]
+        }
+      ];
+
+      function showMessage(text, type) {
+        messageBox.textContent = text;
+        messageBox.className = `message ${type}`;
+      }
+
+      function switchView(showSignup) {
+        loginView.classList.toggle('hidden', showSignup);
+        signupView.classList.toggle('hidden', !showSignup);
+        togglePrompt.textContent = showSignup ? 'Already have an account?' : 'Don’t have an account?';
+        toggleAuthLink.textContent = showSignup ? 'Sign in' : 'Sign up';
+        messageBox.className = 'message';
+        messageBox.textContent = '';
+      }
+
+      function renderFeatureStrip() {
+        featureStrip.innerHTML = photoGroups.map((group, index) => `
+          <button class="feature-pill ${index === 0 ? 'active' : ''}" data-group="${group.name}">${group.name}</button>
+        `).join('');
+      }
+
+      function renderGallery(groupName) {
+        const selectedGroup = photoGroups.find((group) => group.name === groupName) || photoGroups[0];
+        dashboardGrid.innerHTML = selectedGroup.items.map((photo) => `
+          <article class="photo-card">
+            <div class="photo-image" style="background-image:url('${photo.image}')"></div>
+            <div class="photo-content">
+              <h3>${photo.title}</h3>
+              <p>${photo.description}</p>
+              <div class="meta-row"><span>📍 ${photo.location}</span></div>
+              <div class="meta-row"><span>📅 ${photo.date}</span></div>
+              <div class="meta-row"><span>❤️ ${photo.likes}</span></div>
+              <div class="card-actions">
+                <button class="action-link view-btn" data-image="${photo.image}" data-title="${photo.title}" type="button">🔍 View Full Image</button>
+                <button class="action-link download-btn" data-image="${photo.image}" data-title="${photo.title}" type="button">⬇ Download</button>
+              </div>
+            </div>
+          </article>
+        `).join('');
+      }
+
+      function openImageModal(imageUrl, title) {
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+        modalImage.src = imageUrl;
+        modalImage.alt = title;
+        modalCaption.textContent = title;
+        modal.classList.remove('hidden');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeImageModal() {
+        const modal = document.getElementById('imageModal');
+        modal.classList.add('hidden');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      async function downloadImage(url, title) {
+        const fileName = `${title.toLowerCase().replace(/[^a-z0-9]+/g, '-') || 'image'}.jpg`;
+        try {
+          const response = await fetch(url);
+          const blob = await response.blob();
+          const blobUrl = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = blobUrl;
+          link.download = fileName;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(blobUrl);
+        } catch (error) {
+          const fallback = document.createElement('a');
+          fallback.href = url;
+          fallback.download = fileName;
+          fallback.target = '_blank';
+          document.body.appendChild(fallback);
+          fallback.click();
+          document.body.removeChild(fallback);
+        }
+      }
+
+      function showDashboard(name) {
+        authLayout.classList.add('hidden');
+        dashboardPage.classList.remove('hidden');
+        dashboardGreeting.textContent = `Welcome back, ${name}`;
+        renderFeatureStrip();
+        renderGallery(photoGroups[0].name);
+      }
+
+      function showAuth() {
+        authLayout.classList.remove('hidden');
+        dashboardPage.classList.add('hidden');
+      }
+
+      toggleAuthLink.addEventListener('click', function (event) {
+        event.preventDefault();
+        const showSignup = signupView.classList.contains('hidden');
+        switchView(showSignup);
+      });
+
+      document.getElementById('loginForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const email = document.getElementById('loginEmail').value.trim();
+        const password = document.getElementById('loginPassword').value;
+        const accounts = JSON.parse(localStorage.getItem('aureliaAccounts') || '[]');
+        const account = accounts.find((item) => item.email === email && item.password === password);
+
+        if (account) {
+          this.reset();
+          showDashboard(account.name);
+        } else {
+          showMessage('Invalid email or password. Try signing up first.', 'error');
+        }
+      });
+
+      document.getElementById('signupForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const name = document.getElementById('signupName').value.trim();
+        const email = document.getElementById('signupEmail').value.trim();
+        const password = document.getElementById('signupPassword').value;
+        const accounts = JSON.parse(localStorage.getItem('aureliaAccounts') || '[]');
+
+        if (!name || !email || !password) {
+          showMessage('Please complete every field.', 'error');
+          return;
+        }
+
+        if (accounts.some((item) => item.email === email)) {
+          showMessage('This email is already registered.', 'error');
+          return;
+        }
+
+        accounts.push({ name, email, password });
+        localStorage.setItem('aureliaAccounts', JSON.stringify(accounts));
+        showMessage('Account created successfully. You can sign in now.', 'success');
+        this.reset();
+        switchView(false);
+      });
+
+      featureStrip.addEventListener('click', function (event) {
+        const button = event.target.closest('.feature-pill');
+        if (!button) return;
+
+        Array.from(featureStrip.children).forEach((pill) => pill.classList.remove('active'));
+        button.classList.add('active');
+        renderGallery(button.dataset.group);
+      });
+
+      dashboardGrid.addEventListener('click', function (event) {
+        const viewButton = event.target.closest('.view-btn');
+        const downloadButton = event.target.closest('.download-btn');
+
+        if (viewButton) {
+          event.preventDefault();
+          openImageModal(viewButton.dataset.image, viewButton.dataset.title);
+        }
+
+        if (downloadButton) {
+          event.preventDefault();
+          downloadImage(downloadButton.dataset.image, downloadButton.dataset.title);
+        }
+      });
+
+      document.getElementById('modalCloseBtn').addEventListener('click', closeImageModal);
+      document.getElementById('imageModal').addEventListener('click', function (event) {
+        if (event.target === this) {
+          closeImageModal();
+        }
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          closeImageModal();
+        }
+      });
+
+      logoutBtn.addEventListener('click', function () {
+        showAuth();
+      });
+    </script>
+  </body>
+</html>
