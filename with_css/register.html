@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registration for Photography Portfolio</title>
+</head>
+
+<body style="margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; background:linear-gradient(135deg,#6dd5ed,#2193b0); display:flex; justify-content:center; align-items:center; height:100vh;">
+
+    <div id="login" style="width:100%; display:flex; justify-content:center; align-items:center;">
+
+        <div class="box" style="background:#ffffff; padding:35px; width:350px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.2); text-align:center;">
+
+            <h1 style="margin-bottom:25px; color:#333;">Create Account</h1>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Full Name"
+                style="width:100%; padding:12px; margin:10px 0; border:1px solid #ccc; border-radius:6px; box-sizing:border-box; font-size:15px;"
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Email"
+                style="width:100%; padding:12px; margin:10px 0; border:1px solid #ccc; border-radius:6px; box-sizing:border-box; font-size:15px;"
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                style="width:100%; padding:12px; margin:10px 0; border:1px solid #ccc; border-radius:6px; box-sizing:border-box; font-size:15px;"
+            >
+
+            <input
+                type="password"
+                id="confirm"
+                placeholder="Confirm Password"
+                style="width:100%; padding:12px; margin:10px 0 20px; border:1px solid #ccc; border-radius:6px; box-sizing:border-box; font-size:15px;"
+            >
+
+            <button
+                onclick="register()"
+                style="width:100%; padding:12px; background:#2193b0; color:white; border:none; border-radius:6px; font-size:16px; cursor:pointer;"
+                onmouseover="this.style.background='#176d85'"
+                onmouseout="this.style.background='#2193b0'"
+            >
+                Register
+            </button>
+
+            <p style="margin-top:20px; color:#555;">
+                Already have an account?
+                <a href="login.html" style="color:#2193b0; text-decoration:none; font-weight:bold;">
+                    Login
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

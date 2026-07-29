@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Photography Portfolio - Login</title>
+</head>
+<body>
+<div id="login">
+    <div class="box">
+        <h1>Photography Portfolio</h1>
+        <input type="text" id="user" placeholder="Username">
+        <input type="password" id="pass" placeholder="Password">
+        <p><a href="#">Forgot Password?</a>
+        </p>
+        <button onclick="login()">Login</button>
+        <p>
+            Don't have an account?
+            <a href="register.html">Create Account</a>
+        </p>
+    </div>
+</div>
+<script>
+function login() {
+    let username = document.getElementById("user").value;
+    let password = document.getElementById("pass").value;
+    if (username === "" || password === "") {
+        alert("Please enter Username and Password");
+        return;
+    }
+    alert("Login Successful");
+    // Redirect to home page
+    window.location.href = "home.html";
+}
+</script>
+</body>
+</html>
