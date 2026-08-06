@@ -43,41 +43,34 @@
         }
     </style>
 </head>
-
 <body>
 
-    <div class="box">
-        <h2>Photography Portfolio</h2>
+    <div id="login">
+        <div class="box">
 
-        <input type="text" id="user" placeholder="Username"><br>
+            <h1>Photography Portfolio</h1>
 
-        <input type="password" id="pass" placeholder="Password"><br>
+            <input type="text" placeholder="Username">
+            <br><br>
 
-        <p><a href="#">Forgot Password?</a></p>
+            <input type="password" placeholder="Password">
+            <br><br>
 
-        <button onclick="login()">Login</button>
+            <p>
+                <a href="#">Forgot Password?</a>
+            </p>
 
-        <p>
-            Don't have an account?
-            <a href="register.html">Create Account</a>
-        </p>
+            <p>
+                <a href="home.html">Login</a>
+            </p>
+
+            <p>
+                Don't have an account?
+                <a href="register.html">Create Account</a>
+            </p>
+
+        </div>
     </div>
-
-    <script>
-        function login() {
-
-            var username = document.getElementById("user").value;
-            var password = document.getElementById("pass").value;
-
-            if (username == "" || password == "") {
-                alert("Please enter Username and Password");
-            } else {
-                alert("Login Successful");
-                window.location.href = "home.html";
-            }
-
-        }
-    </script>
 
 </body>
 </html>
