@@ -1,35 +1,119 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Photographer Data</title>
+    <title>Week 9 - Photographer Data</title>
     <link rel="stylesheet" href="../week_3/style.css">
 </head>
+
 <body>
 
 <h1>Photographer Data</h1>
 
-<button onclick="loadData()">Load JSON</button>
-<button onclick="loadXML()">Load XML</button>
+<nav>
+    <a href="../week_1/home.html">Home</a>
+    <a href="../week_5/catalogue.html">Catalogue</a>
+    <a href="ajax.html">Photographer Data</a>
+    <a href="../week_10/ajax.html">Contact</a>
+</nav>
 
-<div id="result"></div>
+<div class="ajax-container">
+
+    <h2>Load Photographer Data</h2>
+
+    <button onclick="loadJSON()">Load JSON</button>
+    <button onclick="loadXML()">Load XML</button>
+
+</div>
+
+<div id="jsonResult"></div>
+
+<div id="xmlResult"></div>
 
 <script>
-function loadData() {
+
+function loadJSON() {
     fetch("photographers.json")
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("JSON file not found");
+            }
+            return response.json();
+        })
         .then(data => {
-            document.getElementById("result").innerText =
-                JSON.stringify(data, null, 2);
+            let output = "";
+
+            data.photographers.forEach(p => {
+                output += `
+                    <div class="data-card">
+                        <h3>${p.name}</h3>
+                        <p>Category: ${p.category}</p>
+                        <p>Location: ${p.location}</p>
+                    </div>
+                `;
+            });
+
+            document.getElementById("jsonResult").innerHTML = output;
+        })
+        .catch(error => {
+            document.getElementById("jsonResult").innerHTML =
+                "Error loading JSON: " + error.message;
         });
 }
 
+
 function loadXML() {
+
     fetch("photographers.xml")
         .then(response => response.text())
         .then(data => {
-            document.getElementById("result").innerText = data;
+
+            let parser = new DOMParser();
+
+            let xml = parser.parseFromString(data, "text/xml");
+
+            let photographers =
+                xml.getElementsByTagName("photographer");
+
+            let output = "";
+
+            for (let i = 0; i < photographers.length; i++) {
+
+                let name =
+                    photographers[i]
+                    .getElementsByTagName("name")[0]
+                    .textContent;
+
+                let category =
+                    photographers[i]
+                    .getElementsByTagName("category")[0]
+                    .textContent;
+
+                let location =
+                    photographers[i]
+                    .getElementsByTagName("location")[0]
+                    .textContent;
+
+                output += `
+                    <div class="data-card">
+                        <h3>${name}</h3>
+                        <p>Category: ${category}</p>
+                        <p>Location: ${location}</p>
+                    </div>
+                `;
+
+            }
+
+            document.getElementById("xmlResult").innerHTML = output;
+
+        })
+        .catch(error => {
+
+            document.getElementById("xmlResult").innerHTML =
+                "Error loading XML";
+
         });
 }
+
 </script>
 
 </body>

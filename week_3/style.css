@@ -6,31 +6,33 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #f5f5f5;
-    color: #222;
+    background: #f8fafc;
+    color: #1e293b;
     line-height: 1.6;
 }
 
 h1 {
-    background: #111;
+    background: #0f172a;
     color: white;
     text-align: center;
-    padding: 25px;
+    padding: 22px;
     font-size: 30px;
 }
 
 h2 {
     text-align: center;
-    margin: 30px 0 15px;
+    margin: 25px 0 15px;
+    color: #0f172a;
 }
 
 h3 {
-    margin: 20px 0 10px;
+    margin: 18px 0 10px;
+    color: #334155;
 }
 
 nav {
-    background: #222;
-    padding: 15px;
+    background: #1e293b;
+    padding: 14px;
     text-align: center;
 }
 
@@ -42,59 +44,66 @@ nav a {
 }
 
 nav a:hover {
-    color: #f0b90b;
+    color: #f59e0b;
 }
 
 hr {
     border: 0;
     height: 1px;
-    background: #ddd;
+    background: #e2e8f0;
+}
+
+p {
+    margin: 10px;
+    text-align: center;
 }
 
 button,
 input[type="submit"] {
-    padding: 12px 25px;
-    background: #111;
+    background: #0f172a;
     color: white;
     border: none;
+    padding: 11px 22px;
+    margin: 10px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 button:hover,
 input[type="submit"]:hover {
-    background: #f0b90b;
-    color: #111;
+    background: #f59e0b;
+    color: #0f172a;
 }
 
 input,
 textarea,
 select {
     width: 100%;
-    padding: 12px;
-    margin-top: 6px;
-    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #cbd5e1;
     border-radius: 6px;
     font-size: 15px;
+    background: white;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
     outline: none;
-    border-color: #111;
+    border-color: #f59e0b;
 }
 
 .login-container,
 .form-container {
-    width: 450px;
+    width: 400px;
     max-width: 90%;
-    margin: 60px auto;
+    margin: 45px auto;
+    padding: 28px;
     background: white;
-    padding: 35px;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px #cbd5e1;
 }
 
 .login-container h2,
@@ -105,7 +114,7 @@ select:focus {
 .login-container label,
 .form-container label {
     display: block;
-    margin-top: 15px;
+    margin-top: 13px;
     font-weight: bold;
 }
 
@@ -114,18 +123,18 @@ select:focus {
 .login-container input[type="submit"],
 .form-container input[type="submit"] {
     width: 100%;
-    margin-top: 20px;
+    margin: 18px 0 0;
 }
 
 .login-container a,
 .form-container a {
-    color: #111;
+    color: #d97706;
     font-weight: bold;
 }
 
 .home {
     text-align: center;
-    padding: 50px 20px;
+    padding: 45px 20px;
 }
 
 .home h2 {
@@ -134,37 +143,38 @@ select:focus {
 
 .home > p {
     max-width: 700px;
-    margin: 15px auto 35px;
+    margin: 15px auto 30px;
 }
 
 .categories,
 .photo-container,
 .data-container {
+    width: 90%;
     max-width: 1100px;
-    margin: 30px auto;
+    margin: 25px auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    padding: 20px;
 }
 
 .categories div,
 .photo-card,
 .data-card {
     background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 22px;
+    border-radius: 10px;
     text-align: center;
+    box-shadow: 0 4px 12px #cbd5e1;
 }
 
 .categories div:hover,
 .photo-card:hover,
 .data-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
 }
 
 .catalogue {
+    width: 90%;
     max-width: 1100px;
     margin: auto;
     padding: 30px 20px;
@@ -179,8 +189,9 @@ select:focus {
 }
 
 #photos {
+    width: 90%;
     max-width: 1000px;
-    margin: 30px auto;
+    margin: 25px auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
@@ -188,84 +199,86 @@ select:focus {
 
 #photos > div {
     background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-#result,
-#jsonResult,
-#xmlResult {
-    max-width: 900px;
-    margin: 25px auto;
-    padding: 25px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 22px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px #cbd5e1;
 }
 
 .ajax-container,
 .data-page {
+    width: 90%;
     max-width: 900px;
-    margin: 50px auto;
-    padding: 30px;
+    margin: 40px auto;
+    padding: 28px;
     background: white;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px #cbd5e1;
     text-align: center;
 }
 
 .ajax-container button,
 .data-page button {
-    margin: 10px;
+    margin: 8px;
+}
+
+#result,
+#jsonResult,
+#xmlResult {
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 22px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px #cbd5e1;
 }
 
 .photographer-container {
+    width: 90%;
     max-width: 1000px;
-    margin: 40px auto;
+    margin: 30px auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    padding: 20px;
+    gap: 20px;
 }
 
 .photographer-card {
     background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+    padding: 22px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px #cbd5e1;
     text-align: center;
 }
 
 .photographer-card h3 {
-    font-size: 23px;
-    margin-bottom: 10px;
+    font-size: 22px;
+    color: #0f172a;
 }
 
 .photographer-card p {
-    margin: 6px 0;
+    color: #64748b;
 }
 
 xml-page {
     display: block;
     padding: 30px;
-    background: #f5f5f5;
+    background: #f8fafc;
 }
 
 photographers {
     display: block;
+    width: 90%;
     max-width: 1000px;
     margin: auto;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 photographer {
     display: block;
     background: white;
-    margin: 20px 0;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+    margin: 18px 0;
+    padding: 22px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px #cbd5e1;
 }
 
 photographer:hover {
@@ -274,38 +287,40 @@ photographer:hover {
 
 name {
     display: block;
-    font-size: 24px;
+    font-size: 23px;
     font-weight: bold;
-    margin-bottom: 10px;
+    color: #0f172a;
+    margin-bottom: 8px;
 }
 
 category {
     display: block;
-    font-size: 18px;
-    margin-bottom: 6px;
+    color: #d97706;
+    font-weight: bold;
 }
 
 location {
     display: block;
-    color: #666;
-    font-size: 16px;
+    color: #64748b;
 }
 
 #message {
-    color: red;
+    color: #dc2626;
     margin-top: 15px;
 }
 
 footer {
-    background: #111;
+    background: #0f172a;
     color: white;
     text-align: center;
-    padding: 20px;
-    margin-top: 50px;
+    padding: 18px;
+    margin-top: 40px;
 }
 
 @media (max-width: 800px) {
     .categories,
+    .photo-container,
+    .data-container,
     #photos {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -317,6 +332,8 @@ footer {
 
 @media (max-width: 500px) {
     .categories,
+    .photo-container,
+    .data-container,
     #photos,
     .photographer-container {
         grid-template-columns: 1fr;
@@ -328,12 +345,12 @@ footer {
 
     nav a {
         display: block;
-        margin: 8px;
+        margin: 7px;
     }
 
     .login-container,
     .form-container {
+        width: 90%;
         margin: 30px auto;
-        padding: 25px;
     }
 }
