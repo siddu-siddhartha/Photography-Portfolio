@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photographer Data</title>
+    <link rel="stylesheet" href="../week_3/style.css">
+</head>
+<body>
+
+<h1>Photographer Data</h1>
+
+<button onclick="loadData()">Load JSON</button>
+<button onclick="loadXML()">Load XML</button>
+
+<div id="result"></div>
+
+<script>
+function loadData() {
+    fetch("photographers.json")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("result").innerText =
+                JSON.stringify(data, null, 2);
+        });
+}
+
+function loadXML() {
+    fetch("photographers.xml")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("result").innerText = data;
+        });
+}
+</script>
+
+</body>
+</html>
