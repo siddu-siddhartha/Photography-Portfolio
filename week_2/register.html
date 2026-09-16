@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+</head>
+<body>
+<link rel="stylesheet" href="../Week-3/style.css">
+<h1>Photography Portfolio</h1>
+
+<h2>Registration</h2>
+
+<form>
+
+    <label>Name:</label>
+    <input type="text" required>
+
+    <br><br>
+
+    <label>Email:</label>
+    <input type="email" required>
+
+    <br><br>
+
+    <label>Phone:</label>
+    <input type="tel" pattern="[0-9]{10}" required>
+
+    <br><br>
+
+    <label>Password:</label>
+    <input type="password" minlength="6" required>
+
+    <br><br>
+
+    <label>Photography Interest:</label>
+
+    <select required>
+        <option value="">Select</option>
+        <option>Nature</option>
+        <option>Wildlife</option>
+        <option>Portrait</option>
+        <option>Travel</option>
+    </select>
+
+    <br><br>
+
+    <input type="submit" value="Register">
+
+</form>
+
+
+
+</body>
+</html>

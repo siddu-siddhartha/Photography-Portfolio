@@ -1,0 +1,9 @@
+<!ELEMENT photographers (photographer+)>
+
+<!ELEMENT photographer (name, category, location)>
+
+<!ELEMENT name (#PCDATA)>
+
+<!ELEMENT category (#PCDATA)>
+
+<!ELEMENT location (#PCDATA)>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>POST Data</title>
+</head>
+<body>
+
+<h1>Photography Contact</h1>
+
+<form onsubmit="sendData(event)">
+
+    <label>Name:</label>
+    <input type="text" id="name" required>
+
+    <br><br>
+
+    <label>Message:</label>
+    <textarea id="message" required></textarea>
+
+    <br><br>
+
+    <button type="submit">Send</button>
+
+</form>
+
+<p id="result"></p>
+
+<script src="post.js"></script>
+
+</body>
+</html>

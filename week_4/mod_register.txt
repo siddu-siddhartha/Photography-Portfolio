@@ -1,0 +1,32 @@
+<form onsubmit="return validateForm()">
+
+    <label>Name:</label>
+    <input type="text" id="name">
+
+    <br><br>
+
+    <label>Email:</label>
+    <input type="email" id="email">
+
+    <br><br>
+
+    <label>Phone:</label>
+    <input type="text" id="phone">
+
+    <br><br>
+
+    <label>Password:</label>
+    <input type="password" id="password">
+
+    <br><br>
+
+    <label>Confirm Password:</label>
+    <input type="password" id="confirmPassword">
+
+    <br><br>
+
+    <input type="submit" value="Register">
+
+</form>
+
+<script src="../Week-4/validation.js"></script>
