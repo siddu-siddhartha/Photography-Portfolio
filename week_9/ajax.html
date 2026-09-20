@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Week 9 - Photographer Data</title>
+    <title>Parse JSON/XML - Fetch API</title>
     <link rel="stylesheet" href="../week_3/style.css">
 </head>
 
@@ -20,8 +20,8 @@
 
     <h2>Load Photographer Data</h2>
 
-    <button onclick="loadJSON()">Load JSON</button>
-    <button onclick="loadXML()">Load XML</button>
+    <button onclick="loadJSON()">Load JSON Data</button>
+    <button onclick="loadXML()">Load XML Data</button>
 
 </div>
 
@@ -32,17 +32,24 @@
 <script>
 
 function loadJSON() {
+
     fetch("photographers.json")
+
         .then(response => {
+
             if (!response.ok) {
                 throw new Error("JSON file not found");
             }
+
             return response.json();
         })
+
         .then(data => {
-            let output = "";
+
+            let output = "<h3>Photographers from JSON</h3>";
 
             data.photographers.forEach(p => {
+
                 output += `
                     <div class="data-card">
                         <h3>${p.name}</h3>
@@ -54,6 +61,7 @@ function loadJSON() {
 
             document.getElementById("jsonResult").innerHTML = output;
         })
+
         .catch(error => {
             document.getElementById("jsonResult").innerHTML =
                 "Error loading JSON: " + error.message;
@@ -64,17 +72,23 @@ function loadJSON() {
 function loadXML() {
 
     fetch("photographers.xml")
-        .then(response => response.text())
-        .then(data => {
 
-            let parser = new DOMParser();
+        .then(response => {
 
-            let xml = parser.parseFromString(data, "text/xml");
+            if (!response.ok) {
+                throw new Error("XML file not found");
+            }
 
-            let photographers =
-                xml.getElementsByTagName("photographer");
+            return response.text();
+        })
 
-            let output = "";
+        .then(text => new DOMParser().parseFromString(text, "text/xml"))
+
+        .then(xml => {
+
+            let photographers = xml.getElementsByTagName("photographer");
+
+            let output = "<h3>Photographers from XML</h3>";
 
             for (let i = 0; i < photographers.length; i++) {
 
@@ -100,17 +114,14 @@ function loadXML() {
                         <p>Location: ${location}</p>
                     </div>
                 `;
-
             }
 
             document.getElementById("xmlResult").innerHTML = output;
-
         })
+
         .catch(error => {
-
             document.getElementById("xmlResult").innerHTML =
-                "Error loading XML";
-
+                "Error loading XML: " + error.message;
         });
 }
 

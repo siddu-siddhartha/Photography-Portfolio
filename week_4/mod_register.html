@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration - JavaScript Validation</title>
+    <link rel="stylesheet" href="../week_3/style.css">
+</head>
+
+<body>
+
+<h1>Photography Portfolio</h1>
+
+<nav>
+    <a href="../week_1/home.html">Home</a>
+    <a href="../week_2/register.html">Registration</a>
+    <a href="mod_register.html">Validated Registration</a>
+</nav>
+
+<div class="form-container">
+
+    <h2>Registration</h2>
+
+    <form onsubmit="return validateForm()">
+
+        <label>Name:</label>
+        <input type="text" id="name">
+
+        <label>Email:</label>
+        <input type="text" id="email">
+
+        <label>Phone:</label>
+        <input type="text" id="phone">
+
+        <label>Password:</label>
+        <input type="password" id="password">
+
+        <label>Confirm Password:</label>
+        <input type="password" id="confirmPassword">
+
+        <label>Photography Interest:</label>
+
+        <select id="interest">
+            <option value="">Select</option>
+            <option>Nature</option>
+            <option>Wildlife</option>
+            <option>Portrait</option>
+            <option>Travel</option>
+        </select>
+
+        <input type="submit" value="Register">
+
+    </form>
+
+    <p>
+        Already registered?
+        <a href="../week_1/login.html">Login</a>
+    </p>
+
+</div>
+
+<script src="validation.js"></script>
+
+</body>
+</html>

@@ -1,53 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registration</title>
+    <title>Registration - Photography Portfolio</title>
+
+    <!-- External CSS (Week 3) -->
+    <link rel="stylesheet" href="../week_3/style.css">
+
+    <!-- Internal CSS (Week 3) -->
+    <style>
+        .form-container {
+            border-top: 4px solid #f59e0b;
+        }
+
+        .note {
+            color: #64748b;
+            font-size: 14px;
+        }
+    </style>
 </head>
+
 <body>
-<link rel="stylesheet" href="../week_3/style.css">
+
 <h1>Photography Portfolio</h1>
 
-<h2>Registration</h2>
+<div class="form-container">
 
-<form>
+    <h2>Registration</h2>
 
-    <label>Name:</label>
-    <input type="text" required>
+    <form>
 
-    <br><br>
+        <label>Name:</label>
+        <input type="text" id="name" name="name" required>
 
-    <label>Email:</label>
-    <input type="email" required>
+        <label>Email:</label>
+        <input type="email" id="email" name="email" required>
 
-    <br><br>
+        <label>Phone:</label>
+        <input
+            type="tel"
+            id="phone"
+            name="phone"
+            pattern="[0-9]{10}"
+            title="Enter a 10 digit phone number"
+            required
+        >
 
-    <label>Phone:</label>
-    <input type="tel" pattern="[0-9]{10}" required>
+        <label>Password:</label>
+        <input
+            type="password"
+            id="password"
+            name="password"
+            minlength="6"
+            required
+        >
 
-    <br><br>
+        <label>Photography Interest:</label>
 
-    <label>Password:</label>
-    <input type="password" minlength="6" required>
+        <select id="interest" name="interest" required>
+            <option value="">Select</option>
+            <option>Nature</option>
+            <option>Wildlife</option>
+            <option>Portrait</option>
+            <option>Travel</option>
+        </select>
 
-    <br><br>
+        <input type="submit" value="Register">
 
-    <label>Photography Interest:</label>
+    </form>
 
-    <select required>
-        <option value="">Select</option>
-        <option>Nature</option>
-        <option>Wildlife</option>
-        <option>Portrait</option>
-        <option>Travel</option>
-    </select>
+    <!-- Inline CSS (Week 3) -->
+    <p class="note" style="margin-top: 16px;">
+        All fields are required.
+    </p>
 
-    <br><br>
+    <p>
+        Already registered?
+        <a href="../week_1/login.html">Login</a>
+    </p>
 
-    <input type="submit" value="Register">
-
-</form>
-
-
+</div>
 
 </body>
 </html>

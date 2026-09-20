@@ -1,27 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AJAX Text Example</title>
+    <title>Load Text - Fetch API</title>
+    <link rel="stylesheet" href="../week_3/style.css">
 </head>
+
 <body>
-<link rel="stylesheet" href="../week_3/style.css">
+
 <h1>Photography Portfolio</h1>
 
-<button onclick="loadText()">Load Photographer Information</button>
+<nav>
+    <a href="../week_1/home.html">Home</a>
+    <a href="../week_5/catalogue.html">Catalogue</a>
+    <a href="../week_9/ajax.html">Photographer Data</a>
+    <a href="../week_10/ajax.html">Contact</a>
+</nav>
 
-<p id="result"></p>
+<div class="ajax-container">
+
+    <h2>Load Text Data Asynchronously</h2>
+
+    <button onclick="loadText()">Load Photographer Information</button>
+
+</div>
+
+<div id="result" style="white-space: pre-line;"></div>
 
 <script>
 
 function loadText() {
 
     fetch("message.txt")
-        .then(response => response.text())
+
+        .then(response => {
+
+            if (!response.ok) {
+                throw new Error("Network error: " + response.status);
+            }
+
+            return response.text();
+        })
+
         .then(data => {
             document.getElementById("result").innerText = data;
         })
+
         .catch(error => {
-            document.getElementById("result").innerText = "Error loading data";
+            document.getElementById("result").innerText =
+                "Error: " + error.message;
         });
 }
 

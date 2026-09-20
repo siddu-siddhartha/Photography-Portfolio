@@ -9,6 +9,11 @@
             "name": "Rahul",
             "category": "Wildlife",
             "location": "Bangalore"
+        },
+        {
+            "name": "Sarah",
+            "category": "Portrait",
+            "location": "Mumbai"
         }
     ]
 }

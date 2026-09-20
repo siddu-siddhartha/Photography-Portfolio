@@ -1,3 +1,4 @@
 Welcome to the Online Photography Portfolio.
 
+This text was loaded asynchronously using the Fetch API.
 Explore nature, wildlife, portrait and travel photography.

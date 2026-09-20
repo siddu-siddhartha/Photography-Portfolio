@@ -132,6 +132,15 @@ select:focus {
     font-weight: bold;
 }
 
+.hero-image {
+    display: block;
+    width: 90%;
+    max-width: 700px;
+    margin: 25px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px #cbd5e1;
+}
+
 .home {
     text-align: center;
     padding: 45px 20px;
@@ -202,6 +211,14 @@ select:focus {
     padding: 22px;
     border-radius: 10px;
     box-shadow: 0 4px 12px #cbd5e1;
+}
+
+.photo-thumb {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
 .ajax-container,
