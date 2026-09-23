@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "target": "ES2015",
+        "module": "es2015",
+        "strict": true,
+        "skipLibCheck": true,
+        "outDir": "."
+    },
+    "files": ["portfolio.ts"]
+}
