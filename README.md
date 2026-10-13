@@ -35,7 +35,7 @@ The `week_*` screenshots in [screenshots](screenshots) show each week's original
 | 12 | [week_12](week_12) | Angular | Photo gallery: data binding, `*ngFor`/`*ngIf`, parent–child components, custom directive |
 | 13–14 | [week_13_14](week_13_14) | Angular SPA | Booking app: routing, services, dependency injection, template-driven form validation |
 
-Screenshots of every week are in [screenshots](screenshots) and in `Week1-14_Output_Screenshots.pdf`.
+Screenshots of every week are in [screenshots](screenshots) and in [codebook and outputs](codebook%20and%20outputs), together with the week 10–14 code PDF. The project presentation is `LensFolio_EWP_Presentation.pptx`.
 
 ## Running it locally
 
