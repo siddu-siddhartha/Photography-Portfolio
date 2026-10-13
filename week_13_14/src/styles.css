@@ -2,22 +2,19 @@
 @import "../../week_3/style.css";
 
 nav a.active {
-  color: #f59e0b;
+  color: #ecebe6;
 }
 
 .error {
   display: block;
-  color: #dc2626;
+  color: #ff7a7a;
   font-size: 13px;
+  margin-top: 4px;
 }
 
 /* Angular adds these classes to form fields automatically */
 input.ng-invalid.ng-touched,
 select.ng-invalid.ng-touched {
-  border-color: #dc2626;
+  border-color: #ff7a7a;
 }
 
-button:disabled {
-  background: #94a3b8;
-  cursor: not-allowed;
-}

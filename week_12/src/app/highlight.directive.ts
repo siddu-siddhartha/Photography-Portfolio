@@ -8,10 +8,10 @@ export class HighlightDirective {
   constructor(private el: ElementRef) { }
 
   @HostListener('mouseenter') onMouseEnter() {
-    this.el.nativeElement.style.backgroundColor = '#fef3c7';
+    this.el.nativeElement.style.backgroundColor = '#1c1a26';
   }
 
   @HostListener('mouseleave') onMouseLeave() {
-    this.el.nativeElement.style.backgroundColor = 'white';
+    this.el.nativeElement.style.backgroundColor = '#111115';
   }
 }

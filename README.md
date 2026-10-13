@@ -1,8 +1,22 @@
-# Online Photography Portfolio
+# LensFolio
 
-A photography portfolio website built week by week. It starts with plain HTML forms and grows to include CSS, JavaScript validation, XML, the Fetch API, TypeScript, and two Angular apps.
+**Capturing moments, one frame at a time.**
 
-![Home page](screenshots/week_1_home.png)
+LensFolio is a photography portfolio website built week by week. It starts with plain HTML forms and grows to include CSS, JavaScript validation, XML, the Fetch API, TypeScript, and two Angular apps.
+
+![LensFolio home page](screenshots/lensfolio_home.jpg)
+
+## Design
+
+Every page, including both Angular apps, shares one dark, cinematic theme defined in [week_3/style.css](week_3/style.css):
+
+- **Colours:** near-black background with a soft blue and violet glow, like light on a camera lens
+- **Fonts:** *Cormorant Garamond* for headings and *Jost* for body text, both from Google Fonts
+- **Layout:** a sticky header with the LensFolio logo and navigation, plus thin-bordered cards, outlined buttons and image grids
+- **Home page:** a "Capturing Moments" hero, an About section and a photo grid of categories
+- **Responsive:** grids collapse to two columns, then one, on smaller screens
+
+The `week_*` screenshots in [screenshots](screenshots) show each week's original output before the redesign.
 
 ## What's in each week
 

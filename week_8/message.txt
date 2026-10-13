@@ -1,4 +1,4 @@
-Welcome to the Online Photography Portfolio.
+Welcome to LensFolio.
 
 This text was loaded asynchronously using the Fetch API.
 Explore nature, wildlife, portrait and travel photography.

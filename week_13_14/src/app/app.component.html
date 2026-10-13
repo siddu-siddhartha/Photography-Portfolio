@@ -1,14 +1,21 @@
-<h1>{{ title }}</h1>
+<header class="site-header">
+  <a class="brand" href="../../week_1/home.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 8.5h3.2L8 6h8l1.8 2.5H21V19H3z"/><circle cx="12" cy="13.2" r="3.8"/><circle cx="12" cy="13.2" r="1.6"/></svg>
+    LensFolio
+  </a>
 
-<nav>
-  <a href="../../week_1/home.html">Portfolio Home</a>
-  <a href="../../week_12/output/index.html">Angular Gallery</a>
-  <!-- routerLink changes the page without reloading -->
-  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
-  <a routerLink="/gallery" routerLinkActive="active">Gallery</a>
-  <a routerLink="/book" routerLinkActive="active">Book a Shoot</a>
-  <a routerLink="/bookings" routerLinkActive="active">My Bookings</a>
-</nav>
+  <nav>
+    <a href="../../week_1/home.html">LensFolio Home</a>
+    <a href="../../week_12/output/index.html">Angular Gallery</a>
+    <!-- routerLink changes the page without reloading -->
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/gallery" routerLinkActive="active">Gallery</a>
+    <a routerLink="/book" routerLinkActive="active">Book a Shoot</a>
+    <a routerLink="/bookings" routerLinkActive="active">My Bookings</a>
+  </nav>
+</header>
+
+<h1>{{ title }}</h1>
 
 <!-- The component for the current route is shown here -->
 <router-outlet></router-outlet>

@@ -1,59 +1,116 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home - Photography Portfolio</title>
+    <title>Home - LensFolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../week_3/style.css">
 </head>
 <body>
 
-<h1>Online Photography Portfolio</h1>
+<header class="site-header">
+    <a class="brand" href="home.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 8.5h3.2L8 6h8l1.8 2.5H21V19H3z"/><circle cx="12" cy="13.2" r="3.8"/><circle cx="12" cy="13.2" r="1.6"/></svg>
+        LensFolio
+    </a>
 
-<hr>
+    <nav>
+        <a href="home.html" class="active">Home</a>
+        <a href="../week_5/catalogue.html">Catalogue</a>
+        <a href="../week_6/photographers.xml">Photographer Information</a>
+        <a href="../week_4/mod_register.html">Register</a>
+        <a href="../week_8/ajax.html">Load Photography Information</a>
+        <a href="../week_9/ajax.html">Photographer Data</a>
+        <a href="../week_10/ajax.html">Contact Photographer</a>
+        <a href="../week_11/typescript.html">TypeScript</a>
+        <a href="../week_12/output/index.html">Angular Gallery</a>
+        <a href="../week_13_14/output/index.html">Book a Shoot</a>
+        <a href="login.html">Logout</a>
+    </nav>
+</header>
 
-<nav>
-    <a href="home.html">Home</a>
-    <a href="../week_5/catalogue.html">Catalogue</a>
-    <a href="../week_6/photographers.xml">Photographer Information</a>
-    <a href="../week_4/mod_register.html">Register</a>
-    <a href="../week_8/ajax.html">Load Photography Information</a>
-    <a href="../week_9/ajax.html">Photographer Data</a>
-    <a href="../week_10/ajax.html">Contact Photographer</a>
-    <a href="../week_11/typescript.html">TypeScript</a>
-    <a href="../week_12/output/index.html">Angular Gallery</a>
-    <a href="../week_13_14/output/index.html">Book a Shoot</a>
-    <a href="login.html">Logout</a>
-</nav>
+<section class="hero">
 
-<hr>
+    <div class="hero-text">
+        <h2 class="eyebrow">Welcome to LensFolio</h2>
 
-<h2>Welcome to My Photography Portfolio</h2>
+        <h1>Capturing<br>Moments</h1>
 
-<img
-    class="hero-image"
-    src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1000"
-    alt="A camera resting on a table"
->
+        <p>
+            Welcome to my online photography portfolio.
+            Explore different types of photography and beautiful moments.
+        </p>
 
-<p>
-    Welcome to my online photography portfolio.
-    Explore different types of photography and beautiful moments.
-</p>
+        <a class="btn" href="../week_5/catalogue.html">View Projects</a>
 
-<h3>Photography Categories</h3>
+        <div class="hero-thumbs">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200" alt="Mountain peaks">
+            <img src="https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=200" alt="Red fox">
+            <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=200" alt="Travel map">
+        </div>
+    </div>
 
-<ul>
-    <li>Nature Photography</li>
-    <li>Wildlife Photography</li>
-    <li>Portrait Photography</li>
-    <li>Travel Photography</li>
-</ul>
+    <div class="hero-visual">
+        <img
+            class="hero-image"
+            src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1000"
+            alt="A camera and lenses on a dark table"
+        >
+    </div>
 
-<h3>About Photography</h3>
+</section>
 
-<p>
-    Photography is the art of capturing beautiful moments,
-    people, places and nature through images.
-</p>
+<section class="about">
+
+    <div>
+        <h2>About</h2>
+
+        <h3>About Photography</h3>
+
+        <p>
+            Photography is the art of capturing beautiful moments,
+            people, places and nature through images.
+        </p>
+
+        <a class="btn" href="../week_9/ajax.html">Meet the Photographers</a>
+    </div>
+
+    <img
+        src="https://images.unsplash.com/photo-1520390138845-fd2d229dd553?w=1000"
+        alt="A photographer holding a camera"
+    >
+
+</section>
+
+<section class="showcase">
+
+    <h3>Photography Categories</h3>
+
+    <ul class="category-grid">
+        <li>
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="Snow covered mountain peaks">
+            <span>Nature Photography</span>
+        </li>
+        <li>
+            <img src="https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=600" alt="A red fox in the snow">
+            <span>Wildlife Photography</span>
+        </li>
+        <li>
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600" alt="Portrait of a smiling woman">
+            <span>Portrait Photography</span>
+        </li>
+        <li>
+            <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600" alt="A traveller with a map">
+            <span>Travel Photography</span>
+        </li>
+    </ul>
+
+</section>
+
+<footer>
+    <a class="brand" href="home.html">LensFolio</a>
+    <p>Capturing moments, one frame at a time.</p>
+    <p>&copy; 2026 LensFolio</p>
+</footer>
 
 </body>
 </html>
