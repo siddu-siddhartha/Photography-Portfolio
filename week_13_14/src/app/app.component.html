@@ -1,0 +1,14 @@
+<h1>{{ title }}</h1>
+
+<nav>
+  <a href="../../week_1/home.html">Portfolio Home</a>
+  <a href="../../week_12/output/index.html">Angular Gallery</a>
+  <!-- routerLink changes the page without reloading -->
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+  <a routerLink="/gallery" routerLinkActive="active">Gallery</a>
+  <a routerLink="/book" routerLinkActive="active">Book a Shoot</a>
+  <a routerLink="/bookings" routerLinkActive="active">My Bookings</a>
+</nav>
+
+<!-- The component for the current route is shown here -->
+<router-outlet></router-outlet>

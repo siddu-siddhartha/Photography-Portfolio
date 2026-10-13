@@ -1,0 +1,12 @@
+/* Reuse the same stylesheet as the earlier weeks */
+@import "../../week_3/style.css";
+
+.cheap {
+  color: #16a34a;
+  font-weight: bold;
+}
+
+.costly {
+  color: #d97706;
+  font-weight: bold;
+}

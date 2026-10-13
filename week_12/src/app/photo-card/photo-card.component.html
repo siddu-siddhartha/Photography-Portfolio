@@ -1,0 +1,21 @@
+<!-- appHighlight is our own custom attribute directive -->
+<div class="photo-card" appHighlight>
+
+  <!-- Property binding: [src] and [alt] -->
+  <img class="photo-thumb" [src]="photo.image" [alt]="photo.title">
+
+  <h3>{{ photo.title }}</h3>
+  <p>{{ photo.category }} Photography</p>
+
+  <!-- *ngIf + ngClass: price is green when cheap, orange when costly -->
+  <p *ngIf="showPrice" [ngClass]="photo.price > 3000 ? 'costly' : 'cheap'">
+    Rs. {{ photo.price }}
+  </p>
+
+  <!-- ngStyle sets a style from a value -->
+  <p [ngStyle]="{ 'font-size': '13px', 'color': '#64748b' }">
+    Hover over me!
+  </p>
+
+  <button (click)="likePhoto()">Like</button>
+</div>

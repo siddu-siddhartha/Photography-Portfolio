@@ -1,0 +1,42 @@
+<div class="form-container">
+  <h2>Book a Photo Shoot</h2>
+
+  <!-- Template-driven form: #bookingForm holds the whole form -->
+  <form #bookingForm="ngForm" (ngSubmit)="onSubmit(bookingForm)">
+
+    <label>Name:</label>
+    <input type="text" name="name" [(ngModel)]="booking.name"
+           #name="ngModel" required minlength="3">
+    <small class="error" *ngIf="name.invalid && name.touched">
+      Name is required (at least 3 letters).
+    </small>
+
+    <label>Email:</label>
+    <input type="email" name="email" [(ngModel)]="booking.email"
+           #email="ngModel" required email>
+    <small class="error" *ngIf="email.invalid && email.touched">
+      Please enter a valid email.
+    </small>
+
+    <label>Category:</label>
+    <select name="category" [(ngModel)]="booking.category" #category="ngModel" required>
+      <option value="">-- Select --</option>
+      <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+    </select>
+    <small class="error" *ngIf="category.invalid && category.touched">
+      Please choose a category.
+    </small>
+
+    <label>Date:</label>
+    <input type="date" name="date" [(ngModel)]="booking.date" #date="ngModel" required>
+    <small class="error" *ngIf="date.invalid && date.touched">
+      Please pick a date.
+    </small>
+
+    <label>Message:</label>
+    <textarea name="message" [(ngModel)]="booking.message"></textarea>
+
+    <!-- Button stays disabled until every rule passes -->
+    <button type="submit" [disabled]="bookingForm.invalid">Book Now</button>
+  </form>
+</div>

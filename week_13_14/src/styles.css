@@ -1,0 +1,23 @@
+/* Reuse the same stylesheet as the earlier weeks */
+@import "../../week_3/style.css";
+
+nav a.active {
+  color: #f59e0b;
+}
+
+.error {
+  display: block;
+  color: #dc2626;
+  font-size: 13px;
+}
+
+/* Angular adds these classes to form fields automatically */
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: #dc2626;
+}
+
+button:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}

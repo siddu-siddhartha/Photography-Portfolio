@@ -1,0 +1,11 @@
+<h2>Gallery</h2>
+
+<div class="photo-container">
+  <div class="photo-card" *ngFor="let photo of photos">
+    <img class="photo-thumb" [src]="photo.image" [alt]="photo.title">
+    <h3>{{ photo.title }}</h3>
+    <p>{{ photo.category }} - Rs. {{ photo.price }}</p>
+    <!-- Sends the category to the booking page in the URL -->
+    <button routerLink="/book" [queryParams]="{ category: photo.category }">Book</button>
+  </div>
+</div>
