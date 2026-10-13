@@ -164,37 +164,100 @@ nav {
     padding: 0;
 }
 
-nav a {
-    position: relative;
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 1.6px;
-    text-transform: uppercase;
-    padding: 4px 0;
-    transition: color 0.2s;
+/* Each link is an icon button; its text shows as a tooltip on hover/focus */
+.site-header nav {
+    gap: 6px;
 }
 
-nav a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 1px;
-    background: var(--accent);
-    transition: width 0.25s;
+nav a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    color: var(--muted);
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+nav a svg {
+    width: 20px;
+    height: 20px;
 }
 
 nav a:hover,
-nav a.active {
+nav a:focus-visible {
     color: var(--text);
+    border-color: var(--line-strong);
+    background: rgba(255, 255, 255, 0.04);
+    outline: none;
 }
 
-nav a:hover::after,
-nav a.active::after {
-    width: 100%;
+nav a.active {
+    color: var(--accent);
+    border-color: rgba(182, 166, 255, 0.45);
+    background: rgba(182, 166, 255, 0.08);
+}
+
+nav a.nav-end {
+    margin-left: 14px;
+}
+
+nav a.nav-end::before {
+    content: "";
+    position: absolute;
+    left: -11px;
+    top: 9px;
+    bottom: 9px;
+    width: 1px;
+    background: var(--line);
+}
+
+.nav-label {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 12px;
+    white-space: nowrap;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--text);
+    background: var(--surface-2);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    animation: tooltip-in 0.15s ease-out;
+}
+
+nav a:hover .nav-label,
+nav a:focus-visible .nav-label {
+    display: block;
+}
+
+nav a:first-child .nav-label {
+    left: 0;
+    transform: none;
+}
+
+nav a:last-child .nav-label {
+    left: auto;
+    right: 0;
+    transform: none;
+}
+
+@keyframes tooltip-in {
+    from {
+        opacity: 0;
+        margin-top: -4px;
+    }
 }
 
 /* ---------- Buttons and form fields ---------- */
@@ -790,15 +853,6 @@ location {
 /* ---------- Responsive ---------- */
 
 @media (max-width: 900px) {
-    .site-header {
-        flex-direction: column;
-        position: static;
-    }
-
-    .site-header nav {
-        justify-content: center;
-    }
-
     .hero,
     .about {
         grid-template-columns: 1fr;
@@ -824,6 +878,17 @@ location {
     }
 }
 
+@media (max-width: 720px) {
+    .site-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .site-header nav {
+        justify-content: center;
+    }
+}
+
 @media (max-width: 520px) {
     .categories,
     .photo-container,
@@ -835,8 +900,13 @@ location {
         grid-template-columns: 1fr;
     }
 
-    nav {
-        gap: 4px 16px;
+    .site-header nav {
+        gap: 2px;
+    }
+
+    nav a {
+        width: 38px;
+        height: 38px;
     }
 
     .login-container,
